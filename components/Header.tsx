@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Header = (): JSX.Element => {
 	return (
-		<header className="flex items-center justify-between py-3 border-b border-gray-300 shadow-sm px-2 sm:px-10 md:px-20">
+		<header className="flex items-center justify-between py-3 px-2  md:px-3 ">
 			<div className="flex items-center space-x-4 ">
 				<Link href="/" passHref>
 					<div className="w-32 ">
