@@ -1,14 +1,14 @@
 const Banner = () => {
 	return (
 		<div className="w-full flex  justify-between items-center border-y border-slate-500 py-10 lg:py-0  bg-yellow-400 px-2  md:px-3  ">
-			<div>
-				<h1 className="text-5xl font-serif max-w-xl">
+			<div className="max-w-xl">
+				<h1 className="text-5xl font-serif ">
 					<span className="underline decoration-black decoration-2">
 						Medium
 					</span>{" "}
 					is a place to write,read and connect
 				</h1>
-				<h2>
+				<h2 className="text-base sm:text-lg font-semibold mt-5">
 					{/* eslint-disable-next-line react/no-unescaped-entities */}
 					It's ease and free to post your thinking on any topic and
 					connect with million of reader.
