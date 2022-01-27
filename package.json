@@ -10,6 +10,7 @@
   "dependencies": {
     "@sanity/cli": "^2.25.0",
     "next": "12.0.8",
+    "next-sanity": "^0.4.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
