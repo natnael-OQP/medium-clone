@@ -213,7 +213,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-2.25.0.tgz#7d067bbd76f83508aacdd522d42d0c2314043627"
   integrity sha512-rVImn6ZffI2OaQ3OwfMuwjCf9MtUnyMKeWyEjmnBsa9hoDwpLJs/im6/e35GQT4eNkQ0PbDg3Lq3s53jlSqpqw==
 
-"@sanity/client@2.23.2", "@sanity/client@^2.14.0":
+"@sanity/client@2.23.2", "@sanity/client@^2.14.0", "@sanity/client@^2.23.2":
   version "2.23.2"
   resolved "https://registry.yarnpkg.com/@sanity/client/-/client-2.23.2.tgz#4d5490c8c401ae81941103ba79938f4cde83d4df"
   integrity sha512-t0IbBYTLAWs5U3bi0pCcIcaQay6IakS+EVSoX6/zcGoEEgxj1KdLWx7ozXMPj9O/IGztRRifyNEWLkclazmqyQ==
@@ -1776,6 +1776,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+next-sanity-image@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/next-sanity-image/-/next-sanity-image-3.2.1.tgz#81b44969c7b5c281b7f29fe25b3649828fc5a5ea"
+  integrity sha512-lnynR/h7kD5ueVxQoam8ElKXb+bGWuU1cP+PCwx1NzIiBUHM2wBMnvmpt+emubGocMaIURT/iwPU46VnmB9rsQ==
+  dependencies:
+    "@sanity/image-url" "^0.140.22"
 
 next-sanity@^0.4.0:
   version "0.4.0"
