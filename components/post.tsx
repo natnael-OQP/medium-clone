@@ -25,15 +25,16 @@ const Post = ({ post }: props) => {
 		post.author.image
 	);
 	const truncate = (str: string) => {
-		return str.substring(0, 23) + " ...";
+		return str.substring(0, 30) + " ...";
 	};
 	return (
 		<Link href={post.slug.current} passHref>
 			{/* Image */}
-			<div className="w-full sm:max-w-96 px-1  sm:px-3 mx-auto  ">
+			<div className="w-full sm:max-w-96 px-1  sm:px-3 mx-auto group  cursor-pointer">
 				{post.mainImage && (
-					<div className="w-full h-[200px] bg-gray-200 relative rounded-md overflow-hidden">
+					<div className="w-full h-[200px] bg-gray-200 relative rounded-md overflow-hidden  ">
 						<Img
+							className="group-hover:scale-105 transition-transform duration-200 transform-gpu ease-in-out"
 							src={mainImage.src}
 							loader={mainImage.loader}
 							layout="fill"
@@ -46,8 +47,10 @@ const Post = ({ post }: props) => {
 						<h1 className="text-lg capitalize font-bold text-gray-800">
 							{post.title}
 						</h1>
-						<p className="text-base text-gray-700 ">
-							{truncate(post.description)} by {post.author.name}
+						<p className="text-sm text-gray-600 ">
+							{truncate(post.description)}{" "}
+							<span className="text-gray-800">by</span>{" "}
+							<span className="text-xs font-semibold italic">{post.author.name}</span>
 						</p>
 					</div>
 					{/* author profile */}
