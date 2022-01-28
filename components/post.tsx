@@ -8,7 +8,7 @@ interface props {
 	post: Post;
 }
 
-const configuredSanityClient = sanityClient({
+export const configuredSanityClient = sanityClient({
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 	useCdn: true,
@@ -28,7 +28,7 @@ const Post = ({ post }: props) => {
 		return str.substring(0, 30) + " ...";
 	};
 	return (
-		<Link href={post.slug.current} passHref>
+		<Link href={`/post/${post.slug.current}`} passHref>
 			{/* Image */}
 			<div className="w-full sm:max-w-96 px-1  sm:px-3 mx-auto group  cursor-pointer">
 				{post.mainImage && (
@@ -50,7 +50,9 @@ const Post = ({ post }: props) => {
 						<p className="text-sm text-gray-600 ">
 							{truncate(post.description)}{" "}
 							<span className="text-gray-800">by</span>{" "}
-							<span className="text-xs font-semibold italic">{post.author.name}</span>
+							<span className="text-xs font-semibold italic">
+								{post.author.name}
+							</span>
 						</p>
 					</div>
 					{/* author profile */}
