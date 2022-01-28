@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Banner from "../components/banner";
 import Header from "../components/Header";
-import PostsPreview from "../components/postsCollection";
-import { sanityClient, urlFor } from "../lib/sanity";
+import PostsPreview from "../components/postsPreview";
+import { sanityClient } from "../lib/sanity";
 import { Post } from "../type";
 export interface Props {
 	posts: [Post];
