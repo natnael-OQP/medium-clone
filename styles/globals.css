@@ -1,13 +1,42 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+/* ***************************************************** custom scroll-bar ******************************************* */
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 4px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 100vh;
+	background: transparent;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #48546e;
+	border-radius: 100vh;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #a0aec0;
+}
+/* ***************************************************** reused style ******************************************* */
+@layer components {
+	.label {
+		@apply flex items-center py-2
+	}
+  .input {
+		@apply w-full text-sm text-gray-700 outline-none px-2 pt-[6px] pb-[3px] rounded-md focus:border-b focus:border-gray-500 bg-slate-100
+	}
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
