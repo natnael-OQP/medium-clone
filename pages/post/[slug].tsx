@@ -19,12 +19,11 @@ const Post = ({ post }: Props) => {
 		configuredSanityClient,
 		post.author.image
 	);
-		console.log(post.body);
-		
+
 	return (
-		<div>
+		<div className="pb-10">
 			<Header />
-			<main className="max-w-[730px] mx-auto  sm:p-5  space-y-5 md:space-y-8">
+			<main className="max-w-[730px] mx-auto  sm:p-5  space-y-5 md:space-y-8 ">
 				<div>
 					<h1 className=" text-4xl sm:text-5xl mt-10 mb-3 font-extrabold text-gray-800 capitalize">
 						{post.title}
@@ -103,6 +102,43 @@ const Post = ({ post }: Props) => {
 						}}
 					/>
 				</div>
+				<div className="max-w-sm  border border-yellow-500 mx-auto my-14" />
+				{/* Comment */}
+				<form className="flex flex-col max-w-sm mx-auto my-10">
+					<h3>Enjoy The Article ? </h3>
+					<h4>Live a Comment Below</h4>
+					<hr className="py-3 mt-2" />
+					<label className="space-x-2 label">
+						<span className="text-sm text-gray-600 font-semibold">
+							Name 
+						</span>
+						<input
+							className="input"
+							type="text"
+							placeholder="Full name"
+						/>
+					</label>
+					<label className="space-x-2 label">
+						<span className="text-sm text-gray-600 font-semibold">
+							Email
+						</span>
+						<input
+							className="input"
+							type="email"
+							placeholder="Email Address"
+						/>
+					</label>
+					<label className="space-x-2 flex flex-col ">
+						<span className="text-sm text-gray-600 font-semibold p-1">
+							Comment
+						</span>
+						<textarea
+							className="w-full input text-slate-100"
+							rows={5}
+							placeholder="Wright your comment"
+						/>
+					</label>
+				</form>
 			</main>
 		</div>
 	);
