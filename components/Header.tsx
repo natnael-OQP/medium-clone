@@ -7,7 +7,7 @@ const Header = (): JSX.Element => {
 		<header className="flex items-center justify-between py-3 px-2  md:px-3 ">
 			<div className="flex items-center space-x-4 ">
 				<Link href="/" passHref>
-					<div className="w-32 ">
+					<div className="w-32 cursor-pointer ">
 						{/*eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src="https://miro.medium.com/max/8978/1*s986xIGqhfsN8U--09_AdA.png"
