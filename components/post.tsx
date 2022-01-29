@@ -39,6 +39,7 @@ const Post = ({ post }: props) => {
 							loader={mainImage.loader}
 							layout="fill"
 							objectFit="cover"
+							alt={post.title}
 						/>
 					</div>
 				)}
