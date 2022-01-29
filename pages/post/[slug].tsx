@@ -6,7 +6,6 @@ import { configuredSanityClient } from "../../components/post";
 import { sanityClient } from "../../lib/sanity";
 import PortableText from "react-portable-text";
 import { Post } from "../../type";
-import { blockContentToPlainText } from "react-portable-text";
 
 interface Props {
 	post: Post;
