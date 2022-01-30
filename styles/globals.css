@@ -34,7 +34,7 @@ body {
 		@apply flex items-center py-2
 	}
   .input {
-		@apply w-full text-sm text-gray-700 outline-none px-2 pt-[6px] pb-[3px] rounded-md focus:border-b focus:border-gray-500 bg-slate-100
+		@apply w-full text-sm text-gray-700 outline-none px-2 pt-[6px] pb-[3px] rounded-md  focus:border-b-[.1rem] focus:border-gray-500 bg-slate-100
 	}
 }
 @tailwind base;
