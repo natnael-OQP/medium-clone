@@ -102,11 +102,11 @@ const Post = ({ post }: Props) => {
 						}}
 					/>
 				</div>
-				<div className="max-w-sm  border border-yellow-500 mx-auto my-14" />
+				<div className="max-w-sm  border border-yellow-500 mx-auto mt-10" />
 				{/* Comment */}
-				<form className="flex flex-col max-w-sm mx-auto my-10">
-					<h3>Enjoy The Article ? </h3>
-					<h4>Live a Comment Below</h4>
+				<form className="flex flex-col max-w-sm mx-auto my-10 px-2">
+					<h3 className="text-sm text-yellow-500">Enjoyed This Article ? </h3>
+					<h4 className="text-2xl md:text-3xl font-bold mt-2">Leave a Comment Below!</h4>
 					<hr className="py-3 mt-2" />
 					<label className="space-x-2 label">
 						<span className="text-sm text-gray-600 font-semibold">
