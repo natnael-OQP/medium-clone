@@ -9,8 +9,8 @@ interface props {
 }
 
 export const configuredSanityClient = sanityClient({
-	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+	projectId: "mdmgzj2t",
+	dataset: "production",
 	useCdn: true,
 });
 
