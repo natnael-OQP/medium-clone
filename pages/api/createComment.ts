@@ -7,7 +7,7 @@ export const config = {
 	projectId: "mdmgzj2t",
 	useCdn: process.env.NODE_ENV === "production",
 	token: process.env.SANITY_API_TOKEN,
-	apiVersion: "2021-10-21",
+	apiVersion: '2021-08-31',
 };
 
 const client = sanityClient(config);
@@ -32,7 +32,7 @@ export default async function handler(
 		return res
 			.status(500)
 			.json({ message: "Couldn't not Submit Comment", error });
-    }
-	return res.status(200).json({ message: "Form Submitted" });
+	}
+	return res.status(200).json({ message: "Comment Submitted" });
 
 }
