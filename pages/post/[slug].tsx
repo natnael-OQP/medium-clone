@@ -8,6 +8,8 @@ import PortableText from "react-portable-text";
 import { Post } from "../../type";
 // react-hook-form
 import { useForm, SubmitHandler } from "react-hook-form";
+import { json } from "node:stream/consumers";
+import { useState } from "react";
 
 type FormData = {
 	_id: string;
@@ -19,14 +21,26 @@ interface Props {
 	post: Post;
 }
 const Post = ({ post }: Props) => {
+	const [submitted, setSubmitted] = useState(false);
+
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors },
 	} = useForm<FormData>();
-	const onSubmit: SubmitHandler<FormData> = async(data) => console.log(data);
-
+	
+	const onSubmit: SubmitHandler<FormData> = (data) => {
+		fetch("/api/createComment", {
+			method: "POST",
+			body: JSON.stringify(data),
+		})
+			.then(() => {
+				setSubmitted(true);
+			})
+			.catch((error) => {
+				setSubmitted(false);
+			});
+	};
 	const mainImage = useNextSanityImage(
 		configuredSanityClient,
 		post.mainImage
@@ -37,7 +51,7 @@ const Post = ({ post }: Props) => {
 	);
 
 	return (
-		<div className="pb-10">
+		<div className="pb-20">
 			<Header />
 			<main className="max-w-[730px] mx-auto  sm:p-5  space-y-5 md:space-y-8 ">
 				<div>
@@ -119,81 +133,94 @@ const Post = ({ post }: Props) => {
 						}}
 					/>
 				</div>
-				<div className="max-w-sm  border border-yellow-500 mx-auto mt-10" />
-				{/* Comment */}
-				<form
-					className="flex flex-col max-w-sm mx-auto my-10 px-2"
-					onSubmit={handleSubmit(onSubmit)}
-				>
-					<h3 className="text-sm text-yellow-500">
-						Enjoyed This Article ?{" "}
-					</h3>
-					<h4 className="text-2xl md:text-3xl font-bold mt-2">
-						Leave a Comment Below!
-					</h4>
-					<hr className="py-3 mt-2" />
-					{/* id */}
-					<input
-						{...register("_id")}
-						className="hidden"
-						name="_id"
-						type="text"
-						value={post._id}
-					/>
-					<label className="space-x-2 label">
-						<span className="text-sm text-gray-600 font-semibold">
-							Name
-						</span>
-						<input
-							{...register("name", { required: true })}
-							className="input"
-							type="text"
-							placeholder="Full name"
-						/>
-					</label>
-					{errors.name && (
-						<h5 className="text-orange-600 text-xs font-normal font-mono">
-							full name is required
-						</h5>
-					)}
-					<label className="space-x-2 label">
-						<span className="text-sm text-gray-600 font-semibold">
-							Email
-						</span>
-						<input
-							{...register("email", { required: true })}
-							className="input"
-							type="email"
-							placeholder="Email Address"
-						/>
-					</label>
-					{errors.email && (
-						<h5 className="text-orange-600 text-xs font-normal font-mono">
-							email address is required
-						</h5>
-					)}
-					<label className="space-x-2 flex flex-col ">
-						<span className="text-sm text-gray-600 font-semibold p-1">
-							Comment
-						</span>
-						<textarea
-							{...register("comment", { required: true })}
-							className="w-full input p-2   mx-0 text-slate-600 placeholder-slate-400"
-							rows={5}
-							placeholder="Wright your comment"
-						/>
-					</label>
-					{/* error will return when filed validation file */}
-					{errors.comment && (
-						<h5 className="text-orange-600 text-xs font-normal font-mono">
-							Comment is required
-						</h5>
-					)}
-					<input
-						className="bg-amber-500 hover:bg-amber-400 hover:scale-105 active:scale-95 transition-transform ease-in-out duration-200  py-2 text-white text-base font-semibold mt-10 rounded-lg cursor-pointer"
-						type="submit"
-					/>
-				</form>
+				<div className="max-w-sm  border border-yellow-500 mx-auto mt-10 " />
+				{submitted ? (
+					<div className="flex flex-col  bg-amber-500 py-14  text-white max-w-md mx-auto text-center rounded-md shadow-lg shadow-amber-300 ">
+						<h4 className="text-lg md:text-xl font-semibold ">
+							Tanks you for submitted your comment!{" "}
+						</h4>
+						<p className="text-sm md:text-base  font-semibold md:mt-3">
+							Once it has been approved,it will appear below!
+						</p>
+					</div>
+				) : (
+					<>
+						{/* Comment */}
+						<form
+							className="flex flex-col max-w-sm mx-auto my-10 px-2"
+							onSubmit={handleSubmit(onSubmit)}
+						>
+							<h3 className="text-sm text-yellow-500">
+								Enjoyed This Article ?{" "}
+							</h3>
+							<h4 className="text-2xl md:text-3xl font-bold mt-2">
+								Leave a Comment Below!
+							</h4>
+							<hr className="py-3 mt-2" />
+							{/* id */}
+							<input
+								{...register("_id")}
+								className="hidden"
+								name="_id"
+								type="text"
+								value={post._id}
+							/>
+							<label className="space-x-2 label">
+								<span className="text-sm text-gray-600 font-semibold">
+									Name
+								</span>
+								<input
+									{...register("name", { required: true })}
+									className="input"
+									type="text"
+									placeholder="Full name"
+								/>
+							</label>
+							{errors.name && (
+								<h5 className="text-orange-600 text-xs font-normal font-mono">
+									full name is required
+								</h5>
+							)}
+							<label className="space-x-2 label">
+								<span className="text-sm text-gray-600 font-semibold">
+									Email
+								</span>
+								<input
+									{...register("email", { required: true })}
+									className="input"
+									type="email"
+									placeholder="Email Address"
+								/>
+							</label>
+							{errors.email && (
+								<h5 className="text-orange-600 text-xs font-normal font-mono">
+									email address is required
+								</h5>
+							)}
+							<label className="space-x-2 flex flex-col ">
+								<span className="text-sm text-gray-600 font-semibold p-1">
+									Comment
+								</span>
+								<textarea
+									{...register("comment", { required: true })}
+									className="w-full input p-2   mx-0 text-slate-600 placeholder-slate-400"
+									rows={5}
+									placeholder="Wright your comment"
+								/>
+							</label>
+							{/* error will return when filed validation file */}
+							{errors.comment && (
+								<h5 className="text-orange-600 text-xs font-normal font-mono">
+									Comment is required
+								</h5>
+							)}
+							<input
+								className="bg-amber-500 hover:bg-amber-400 hover:scale-105 active:scale-95 transition-transform ease-in-out duration-200  py-2 text-white text-base font-semibold mt-10 rounded-lg cursor-pointer"
+								type="submit"
+							/>
+						</form>
+					</>
+				)}
 			</main>
 		</div>
 	);
@@ -234,6 +261,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 			image,
 			bio
 		},
+		'comment':*[
+			_type=='comment' && 
+			post.ref==^._id &&
+			approved==true
+		],
 		body,
 	} `;
 
