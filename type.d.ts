@@ -7,7 +7,7 @@ export interface Post {
 		image: string;
 		bio?: string;
 	};
-	comment:comment[];
+	comment: comment[];
 	description: string;
 	mainImage: {
 		asset: {
@@ -17,7 +17,7 @@ export interface Post {
 	slug: {
 		current: string;
 	};
-	body?: [object] | undefined;
+	body?: object[] | undefined;
 }
 
 export interface comment {
