@@ -1,4 +1,4 @@
-export interface Post  {
+export interface Post {
 	_id: string;
 	_createdAt: string;
 	title: string;
@@ -7,6 +7,7 @@ export interface Post  {
 		image: string;
 		bio?: string;
 	};
+	comment:comment[];
 	description: string;
 	mainImage: {
 		asset: {
@@ -16,5 +17,21 @@ export interface Post  {
 	slug: {
 		current: string;
 	};
-	body?:[object]
+	body?: [object];
+}
+
+export interface comment {
+	comment: string;
+	email: string;
+	name: string;
+	approved: boolean;
+	post: {
+		_ref: string;
+		_type: string;
+	};
+	_createdAt: string;
+	_id: string;
+	_rev: string;
+	_type: string;
+	_updatedAt: string;
 }
