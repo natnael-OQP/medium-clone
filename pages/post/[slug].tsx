@@ -97,7 +97,6 @@ const Post = ({ post }: Props) => {
 				</h3>
 				<div>
 					<PortableText
-						className=""
 						content={post.body}
 						projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
 						dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
