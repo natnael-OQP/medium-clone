@@ -28,7 +28,7 @@ const Post = ({ post }: Props) => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<FormData>();
-	
+
 	const onSubmit: SubmitHandler<FormData> = (data) => {
 		fetch("/api/createComment", {
 			method: "POST",
@@ -145,7 +145,7 @@ const Post = ({ post }: Props) => {
 					</div>
 				) : (
 					<>
-						{/* Comment */}
+						{/* Form */}
 						<form
 							className="flex flex-col max-w-sm mx-auto my-10 px-2"
 							onSubmit={handleSubmit(onSubmit)}
@@ -221,6 +221,21 @@ const Post = ({ post }: Props) => {
 						</form>
 					</>
 				)}
+				{/* Comment */}
+				<div className="flex flex-col space-y-2 max-w-sm mx-auto">
+					<h1 className="text-xl font-semibold">Comments</h1>
+					<hr />
+					{post?.comment.map((comment) => (
+						<div key={comment._id}>
+							<p className="text-sm text-gray-500 font-semibold">
+								<span className="text-amber-500 text-base">
+									{comment.name}:
+								</span>{" "}
+								{comment.comment}
+							</p>
+						</div>
+					))}
+				</div>
 			</main>
 		</div>
 	);
