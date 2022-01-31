@@ -95,43 +95,50 @@ const Post = ({ post }: Props) => {
 				<h3 className="text-sm md:text-xl font-normal text-gray-600">
 					{post.description}
 				</h3>
-				<div>
-					<PortableText
-						content={post?.body}
-						projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-						dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-						serializers={{
-							h1: (props: any) => (
-								<h1
-									className="text-2xl font-bold my-5 text-gray-500"
-									{...props}
-								/>
-							),
-							h2: (props: any) => (
-								<h1
-									className="text-xl font-bold my-5 text-gray-500"
-									{...props}
-								/>
-							),
-							p: (props: any) => (
-								<p
-									className="text-xl font-bold my-5 text-gray-500"
-									{...props}
-								/>
-							),
-							li: ({ children }: any) => (
-								<li className="ml-4 list-disc" {...children} />
-							),
-							link: ({ href, children }: any) => (
-								<a
-									href={href}
-									className="text-blue-500 hover:underline"
-									{...children}
-								/>
-							),
-						}}
-					/>
-				</div>
+				{post?.body && (
+					<div>
+						<PortableText
+							content={post?.body}
+							projectId={
+								process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+							}
+							dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+							serializers={{
+								h1: (props: any) => (
+									<h1
+										className="text-2xl font-bold my-5 text-gray-500"
+										{...props}
+									/>
+								),
+								h2: (props: any) => (
+									<h1
+										className="text-xl font-bold my-5 text-gray-500"
+										{...props}
+									/>
+								),
+								p: (props: any) => (
+									<p
+										className="text-xl font-bold my-5 text-gray-500"
+										{...props}
+									/>
+								),
+								li: ({ children }: any) => (
+									<li
+										className="ml-4 list-disc"
+										{...children}
+									/>
+								),
+								link: ({ href, children }: any) => (
+									<a
+										href={href}
+										className="text-blue-500 hover:underline"
+										{...children}
+									/>
+								),
+							}}
+						/>
+					</div>
+				)}
 				<div className="max-w-sm  border border-yellow-500 mx-auto mt-10 " />
 				{submitted ? (
 					<div className="flex flex-col  bg-amber-500 py-14  text-white max-w-md mx-auto text-center rounded-md shadow-lg shadow-amber-300 ">
